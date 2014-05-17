@@ -406,6 +406,7 @@ hr {
     color: $bright-text-color;
     background: mix(#333, $tile-gold-color, 95%);
 
+
     font-size: 0px;
 
     @include smaller($mobile-threshold) {
@@ -490,6 +491,14 @@ hr {
     padding: 0 20px;
   }
 
+  .tile-img {
+      /*width: auto;*/
+      width: $tile-size;
+      height: $tile-size;
+      /*width: 10px;*/
+  }
+
+
   h1.title {
     font-size: 27px;
     margin-top: 15px;
@@ -533,7 +542,6 @@ hr {
   .tile .tile-inner {
     font-size: 0px;
   }
-
   .game-message {
     p {
       font-size: 30px !important;

@@ -54,7 +54,9 @@ HTMLActuator.prototype.addTile = function (tile) {
   var position  = tile.previousPosition || { x: tile.x, y: tile.y };
   var positionClass = this.positionClass(position);
 
+
   // We can't use classlist because it somehow glitches when replacing classes
+  //var classes = ["tile", "tile-" + tile.value, positionClass];
   var classes = ["tile", "tile-" + tile.value, positionClass];
 
   if (tile.value > 2048) classes.push("tile-super");
@@ -62,7 +64,15 @@ HTMLActuator.prototype.addTile = function (tile) {
   this.applyClasses(wrapper, classes);
 
   inner.classList.add("tile-inner");
-  //inner.textContent = tile.value;
+  //inner.textContent = tile.value; // adds numbers
+  
+  var imgClass = document.createElement("IMG");
+  imgClass.setAttribute('src', '/res/' + tile.value + '.png');
+  imgClass.setAttribute('class', 'tile-img');
+  var width = 107;
+  if (window.innerWidth < 520) width = 58; 
+  imgClass.setAttribute('width', '' + width + 'px');
+  inner.appendChild(imgClass);
 
   if (tile.previousPosition) {
     // Make sure that the tile gets rendered in the previous position first
