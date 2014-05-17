@@ -72,6 +72,7 @@ HTMLActuator.prototype.addTile = function (tile) {
   var width = 107;
   if (window.innerWidth < 520) width = 58; 
   imgClass.setAttribute('width', '' + width + 'px');
+  imgClass.setAttribute('z-index', '0');
   inner.appendChild(imgClass);
 
   if (tile.previousPosition) {
@@ -146,4 +147,12 @@ HTMLActuator.prototype.clearMessage = function () {
   // IE only takes one value to remove at a time.
   this.messageContainer.classList.remove("game-won");
   this.messageContainer.classList.remove("game-over");
+};
+
+// fix for image resizing when size shrinks
+window.onresize = function(event) {
+    var width = 107;
+    if (window.innerWidth < 520) width = 58; 
+        for(var els = document.getElementsByTagName ('img'), i = els.length; i--;)
+            els[i].style.width = '' + width + 'px';
 };
